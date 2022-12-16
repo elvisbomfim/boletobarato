@@ -1,5 +1,5 @@
 {
-    "name": "Econsulte/boleto_barato",
+    "name": "econsulte/boleto_barato",
     "description": "Pacote de integração com a API do boleto barato",
     "type": "library",
     "require-dev": {

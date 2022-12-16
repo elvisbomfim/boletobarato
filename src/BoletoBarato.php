@@ -1,12 +1,12 @@
 <?php
 
-namespace Elvis\BoletoBarato;
+namespace Econsulte\BoletoBarato;
 
 
 class BoletoBarato{
 
 
-    
+
 
 
 }

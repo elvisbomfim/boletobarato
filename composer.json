@@ -8,7 +8,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Elvis\\BoletoBarato\\": "src/"
+            "Econsulte\\BoletoBarato\\": "src/"
         }
     },
     "authors": [

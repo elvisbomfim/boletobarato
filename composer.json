@@ -1,0 +1,20 @@
+{
+    "name": "elvis/boleto_barato",
+    "description": "Pacote de integração com a API do boleto barato",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Elvis\\BoletoBarato\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Elvis Desktop",
+            "email": "elvis@bravosite.com.br"
+        }
+    ]
+}

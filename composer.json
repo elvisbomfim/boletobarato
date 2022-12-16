@@ -1,5 +1,5 @@
 {
-    "name": "elvis/boleto_barato",
+    "name": "Econsulte/boleto_barato",
     "description": "Pacote de integração com a API do boleto barato",
     "type": "library",
     "require-dev": {

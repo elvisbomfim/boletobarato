@@ -16,5 +16,8 @@
             "name": "Elvis Desktop",
             "email": "elvis@bravosite.com.br"
         }
-    ]
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.5"
+    }
 }

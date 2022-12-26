@@ -1,20 +1,37 @@
-# BIBLIOTECA BOLETOBARATO
-Crie um novo objeto BoletoSDK com as credenciais de autenticação da API
-```````
+<?php
+
+// Inclua a classe BoletoAPI no seu arquivo de teste
+require_once 'vendor/autoload.php';
+
 use Econsulte\BoletoBarato\BoletoSDK;
-$api = new BoletoSDK('################################');
-```````
-
-# CRIAÇÃO
-
-```````
 use Econsulte\BoletoBarato\Boleto;
 use Econsulte\BoletoBarato\Cliente;
 use Econsulte\BoletoBarato\Config;
+// Crie um novo objeto BoletoAPI com as credenciais de autenticação da API
+$api = new BoletoSDK('################################');
+
+
+$nome 			 = '';
+$cpfcnpj 		 =  '';
+$valor 			 =  '25,00';
+$email 			 = '';
+$celular 		 =  '';
+$end_cep 		 =  '';
+$end_uf 		 = '';
+$end_cidade_nome = '';
+$end_cidade_id 	 = '';
+$end_bairro 	 = '';
+$end_logradouro  = '';
+$end_numero 	 = '';
+
+$date = date('Y-m-d');
+
+
+// Chame o método generateBoleto e armazene o resultado
 
 $cliente = new Cliente($nome, $cpfcnpj, $celular, $email, $end_logradouro, $end_numero, "", $end_bairro, $end_cep, $end_cidade_nome, $end_uf);
 
-$parcelas = 3; //quantidade de parcelas;
+$parcelas = 3;
 
 
 $day = 1;
@@ -35,22 +52,24 @@ for ($i = 1; $i <= $parcelas; $i++) {
 
 	endif;
 
-	if ($parcelas > 1) : /// condição caso tenha parcelas
+	if ($parcelas > 1) :
 		$result = $api->add((new Boleto($config, $cliente, "{$carne_id}", "19,90", $vencimento, "parc. " . $i . " de " . $parcelas, "Cobrança Aresta - parcela {$i} de {$parcelas}"))
 			->setCarne(1)
 			->setIdParcelamento($carne_id)
 			->setNumParcela($i)
 			->setIdParcela($carne_id + $i));
-	else : // para criar boleto avulso
+	else :
 		$result = $api->add((new Boleto($config, $cliente, "123", "50,00", $vencimento, $carne_id, "Cobrança teste avulsa"))->setCarne(0));
 	endif;
 }
 
 
-```````
+//$result->add(new SetBoleto($config, $cliente, 0, "123","9,50",$vencimento2, "123", "Cobrança teste 2"));
 
-# CANCELAMENTO
+$result = $result->create();
 
-```````
-$result = $api->cancel($codigo);
-```````
+
+
+//$result = $api->cancel(1713088);
+
+var_dump($result);

@@ -1,4 +1,9 @@
-# BIBLIOTECA BOLETOBARATO
+# INSTALAÇÃO
+```````
+composer require econsulte/boleto_barato
+```````
+
+# INÍCIO
 Crie um novo objeto BoletoSDK com as credenciais de autenticação da API
 ```````
 use Econsulte\BoletoBarato\BoletoSDK;

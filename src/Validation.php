@@ -5,6 +5,18 @@ namespace Econsulte\BoletoBarato;
 class Validation
 {
 
+    public static function preco($float)
+    {
+        // Verifica se o número é válido usando a função floatval
+        // Se a conversão for bem-sucedida, formata o número com a função number_format
+        // e retorna o resultado, senão retorna false
+        $float = floatval($float);
+        if ($float) {
+            return number_format($float, 2, ',', '.');
+        } else {
+            return false;
+        }
+    }
 
 
     public static function cpfCnpj($cpfcnpj)
@@ -35,7 +47,7 @@ class Validation
             $dv2 = ($dv2 % 11) < 2 ? 0 : 11 - ($dv2 % 11);
 
             // Verifica se os dígitos verificadores são os mesmos informados
-            if($dv1 === (int)$cpfcnpj[9] && $dv2 === (int)$cpfcnpj[10])
+            if ($dv1 === (int)$cpfcnpj[9] && $dv2 === (int)$cpfcnpj[10])
                 return $cpfcnpj;
         }
         // Verifica se é CNPJ
@@ -62,7 +74,7 @@ class Validation
             $dv2 = ($dv2 % 11) < 2 ? 0 : 11 - ($dv2 % 11);
 
             // Verifica se os dígitos verificadores são os mesmos informados
-            if($dv1 === (int)$cpfcnpj[12] && $dv2  === (int)$cpfcnpj[13])
+            if ($dv1 === (int)$cpfcnpj[12] && $dv2  === (int)$cpfcnpj[13])
                 return $cpfcnpj;
         }
         return false;
@@ -89,9 +101,10 @@ class Validation
         return preg_match('/^\d{8}$/', $cep);
     }
 
-    public static function uf($uf) {
+    public static function uf($uf)
+    {
         // Verifica se a UF possui exatamente 2 caracteres
         // Usando uma expressão regular para verificar se há apenas letras
         return preg_match('/^[A-Za-z]{2}$/', $uf);
-      }
+    }
 }

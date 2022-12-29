@@ -5,6 +5,8 @@ namespace Econsulte\BoletoBarato;
 use DateTime;
 use Econsulte\BoletoBarato\Config;
 
+use Econsulte\BoletoBarato\Validation;
+
 class Boleto
 {
     private $config;
@@ -53,7 +55,9 @@ class Boleto
 
 
         $this->meucodigo = $meucodigo;
-        $this->valor = $valor;
+      
+        $this->setValor($valor);
+
         $this->datavencimento = $datavencimento;
         $this->numerodoc = $numerodoc;
         $this->assunto = $assunto;
@@ -148,7 +152,12 @@ class Boleto
     }
 
     public function setValor($valor)
-    {
+    {   
+        $valor = Validation::preco($valor);
+
+        if(!$valor)
+             throw new \Exception('O preço deverá estar no formato float e será convertido para o formato real brasileiro');
+     
         $this->valor = $valor;
     }
 

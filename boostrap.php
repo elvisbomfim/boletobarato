@@ -10,7 +10,6 @@ use Econsulte\BoletoBarato\Config;
 // Crie um novo objeto BoletoAPI com as credenciais de autenticação da API
 $api = new BoletoSDK('################################');
 
-
 $nome 			 = '';
 $cpfcnpj 		 =  '';
 $valor 			 =  '25,00';
@@ -27,7 +26,7 @@ $end_numero 	 = '';
 $date = date('Y-m-d');
 
 
-// Chame o método generateBoleto e armazene o resultado
+
 
 $cliente = new Cliente($nome, $cpfcnpj, $celular, $email, $end_logradouro, $end_numero, "", $end_bairro, $end_cep, $end_cidade_nome, $end_uf);
 
@@ -64,12 +63,6 @@ for ($i = 1; $i <= $parcelas; $i++) {
 }
 
 
-//$result->add(new SetBoleto($config, $cliente, 0, "123","9,50",$vencimento2, "123", "Cobrança teste 2"));
-
 $result = $result->create();
-
-
-
-//$result = $api->cancel(1713088);
 
 var_dump($result);

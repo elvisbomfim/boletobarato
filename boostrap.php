@@ -8,8 +8,15 @@ use Econsulte\BoletoBarato\Boleto;
 use Econsulte\BoletoBarato\Cliente;
 use Econsulte\BoletoBarato\Config;
 // Crie um novo objeto BoletoAPI com as credenciais de autenticação da API
-$api = new BoletoSDK('################################');
+//$api = new BoletoSDK('################################');
+$api = new BoletoSDK("5F6C147FDDC6D10C917F5A1DFD52975A");
 
+
+$respota = $api->find(1718783);
+
+var_dump($respota);
+
+exit;
 
 $nome 			 = '';
 $cpfcnpj 		 =  '';

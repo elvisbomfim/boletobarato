@@ -92,4 +92,27 @@ class BoletoSDK
             throw new \Exception($e->getMessage());
         }
     }
+
+    public function find($boletoId)
+    {
+        try {
+            // Faça uma solicitação POST para a URL da API de boleto
+            $response = $this->client->request('POST', $this->apiUrl, [
+                'headers' => [
+                    'Authorization' => 'Basic ' . base64_encode($this->accessToken . ":"),
+                ],
+                'form_params' => [
+                    'data_tipo' => 0,
+                    'tipo' => "boleto.retorno",
+                    'idboleto' => $boletoId,
+                ]
+            ]);
+
+            // Retorne o corpo da resposta como um objeto JSON
+            return json_decode($response->getBody());
+        } catch (ClientException $e) {
+            // Trate qualquer exceção lançada pelo cliente aqui
+            throw new \Exception($e->getMessage());
+        }
+    }
 }

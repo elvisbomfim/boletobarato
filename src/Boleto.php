@@ -260,37 +260,7 @@ class Boleto
     public function setEspecie($especie)
     {
         $this->especie = $especie;
-    }
-
-    public function getInstrucoes()
-    {
-        return $this->instrucoes;
-    }
-
-    public function setInstrucoes($instrucoes)
-    {
-        $this->instrucoes = $instrucoes;
-    }
-
-    public function getDescricao()
-    {
-        return $this->descricao;
-    }
-
-    public function setDescricao($descricao)
-    {
-        $this->descricao = $descricao;
-    }
-
-    public function getNumeroDias()
-    {
-        return $this->numerodias;
-    }
-
-    public function setNumeroDias($numerodias)
-    {
-        $this->numerodias = $numerodias;
-    }
+    }  
 
     public function toArray()
     {

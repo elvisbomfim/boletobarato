@@ -93,26 +93,33 @@ class BoletoSDK
         }
     }
 
-    public function find($boletoId)
-    {
-        try {
-            // Faça uma solicitação POST para a URL da API de boleto
-            $response = $this->client->request('POST', $this->apiUrl, [
-                'headers' => [
-                    'Authorization' => 'Basic ' . base64_encode($this->accessToken . ":"),
-                ],
-                'form_params' => [
-                    'data_tipo' => 0,
-                    'tipo' => "boleto.retorno",
-                    'idboleto' => $boletoId,
-                ]
-            ]);
+     // Método para cancelar um boleto
+     public function find($boletoId, $vencimento)
+     {
 
-            // Retorne o corpo da resposta como um objeto JSON
-            return json_decode($response->getBody());
-        } catch (ClientException $e) {
-            // Trate qualquer exceção lançada pelo cliente aqui
-            throw new \Exception($e->getMessage());
-        }
-    }
+        $data_inicio = date("d/m/Y", strtotime($vencimento));
+        $data_fim = date("d/m/Y", strtotime("+1 day", strtotime($vencimento)));
+
+         try {
+             // Faça uma solicitação POST para a URL da API de boleto
+             $response = $this->client->request('POST', $this->apiUrl, [
+                 'headers' => [
+                     'Authorization' => 'Basic ' . base64_encode($this->accessToken . ":"),
+                 ],
+                 'form_params' => [
+                     'tipo' => "boleto.retorno",
+                     'data_tipo' => "0",
+                     'data_inicio' =>  $data_inicio,
+                     'data_fim' => $data_fim,
+                     'idboleto' => $boletoId,                     
+                 ]
+             ]);
+ 
+             // Retorne o corpo da resposta como um objeto JSON
+             return json_decode($response->getBody());
+         } catch (ClientException $e) {
+             // Trate qualquer exceção lançada pelo cliente aqui
+             throw new \Exception($e->getMessage());
+         }
+     }
 }

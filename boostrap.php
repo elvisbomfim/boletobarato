@@ -11,13 +11,6 @@ use Econsulte\BoletoBarato\Config;
 //$api = new BoletoSDK('################################');
 $api = new BoletoSDK("5F6C147FDDC6D10C917F5A1DFD52975A");
 
-
-$respota = $api->find(1718783);
-
-var_dump($respota);
-
-exit;
-
 $nome 			 = '';
 $cpfcnpj 		 =  '';
 $valor 			 =  '25,00';
@@ -34,7 +27,7 @@ $end_numero 	 = '';
 $date = date('Y-m-d');
 
 
-// Chame o método generateBoleto e armazene o resultado
+
 
 $cliente = new Cliente($nome, $cpfcnpj, $celular, $email, $end_logradouro, $end_numero, "", $end_bairro, $end_cep, $end_cidade_nome, $end_uf);
 
@@ -71,12 +64,6 @@ for ($i = 1; $i <= $parcelas; $i++) {
 }
 
 
-//$result->add(new SetBoleto($config, $cliente, 0, "123","9,50",$vencimento2, "123", "Cobrança teste 2"));
-
 $result = $result->create();
-
-
-
-//$result = $api->cancel(1713088);
 
 var_dump($result);

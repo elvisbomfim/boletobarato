@@ -94,11 +94,15 @@ class BoletoSDK
     }
 
      // Método para cancelar um boleto
-     public function find($boletoId, $vencimento)
+     public function find($boletoId = null, $documento = null)
      {
 
-        $data_inicio = date("d/m/Y", strtotime($vencimento));
-        $data_fim = date("d/m/Y", strtotime("+1 day", strtotime($vencimento)));
+        $today = date("Y-m-d");
+
+        $ano = date("Y",strtotime("-2 year", strtotime($today)));
+
+        $data_inicio = date("d/m/Y", strtotime("{$ano}-01-01"));
+        $data_fim = date("d/m/Y", strtotime("+2 year", strtotime($today)));
 
          try {
              // Faça uma solicitação POST para a URL da API de boleto
@@ -111,7 +115,8 @@ class BoletoSDK
                      'data_tipo' => "0",
                      'data_inicio' =>  $data_inicio,
                      'data_fim' => $data_fim,
-                     'idboleto' => $boletoId,                     
+                     'idboleto' => $boletoId,
+                     'cliente_cpfcnpj' => $documento                   
                  ]
              ]);
  

@@ -80,7 +80,8 @@ var_dump($resposta);
 # PESQUISA
 
 ```````
-$resposta = $api->find($boleto_id, $vencimento);
+Pesquisa por ID do boleto ou pelo CPF ou CNPJ com mascara;
+$resposta = $api->find($boleto_id, $cpf_cnpj);
 var_dump($resposta);
 ```````
 
